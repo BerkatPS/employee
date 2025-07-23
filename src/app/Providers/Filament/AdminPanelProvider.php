@@ -24,6 +24,7 @@ use Joaopaulolndev\FilamentEditProfile\Pages\EditProfilePage;
 use App\Filament\Resources\EmployeeResource;
 use App\Filament\Resources\SalaryResource;
 use App\Filament\Resources\AttendanceResource;
+use App\Filament\Resources\EncryptedDataResource;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -59,6 +60,8 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Administration'),
                 NavigationGroup::make()
                     ->label('Employee Management'),
+                NavigationGroup::make()
+                    ->label('System Management'),
             ])
             ->userMenuItems([
                 'profile' => MenuItem::make()
@@ -98,6 +101,7 @@ class AdminPanelProvider extends PanelProvider
                 \Awcodes\Overlook\OverlookPlugin::make()
                     ->includes([
                         \App\Filament\Admin\Resources\UserResource::class,
+                        EncryptedDataResource::class,
                     ]),
                 \Joaopaulolndev\FilamentEditProfile\FilamentEditProfilePlugin::make()
                     ->slug('my-profile')
@@ -113,6 +117,7 @@ class AdminPanelProvider extends PanelProvider
                 EmployeeResource::class,
                 SalaryResource::class,
                 AttendanceResource::class,
+                EncryptedDataResource::class,
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->middleware([

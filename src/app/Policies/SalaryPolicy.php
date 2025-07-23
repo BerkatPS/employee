@@ -12,26 +12,26 @@ class SalaryPolicy
 
     public function viewAny(User $user): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole('super_admin') || $user->hasRole('admin') || $user->hasRole('user');
     }
 
     public function view(User $user, Salary $salary): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole('super_admin') || $user->hasRole('admin') || $user->hasRole('user');
     }
 
     public function create(User $user): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole('super_admin') || $user->hasRole('admin');
     }
 
     public function update(User $user, Salary $salary): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole('super_admin') || $user->hasRole('admin');
     }
 
     public function delete(User $user, Salary $salary): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole('super_admin') || $user->hasRole('admin');
     }
 }
